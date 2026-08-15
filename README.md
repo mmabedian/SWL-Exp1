@@ -61,3 +61,41 @@ pull         fetch + ادغام تغییرات
 merge        ترکیب تاریخچه دو branch
 rebase       انتقال commitها روی base جدید
 cherry-pick  اعمال یک commit مشخص روی branch فعلی
+
+سوال ۴:
+
+reset:
+جابجا کردن HEAD و در حالت‌های مختلف تغییر index/working tree
+
+revert:
+ساخت commit جدید برای خنثی کردن یک commit قبلی
+
+restore:
+بازگرداندن محتوای فایل‌ها
+
+switch:
+تغییر branch یا ایجاد branch جدید
+
+checkout:
+دستور قدیمی چندمنظوره برای branch و فایل
+
+سوال ۵:
+
+Stage یا Index فضای میانی بین Working Directory و Commit است:
+
+git add file.txt
+
+فایل را وارد stage می‌کند.
+
+stash تغییرات commit نشده را موقتاً کنار می‌گذارد:
+
+git stash
+git stash pop
+
+سوال ۶:
+
+Snapshot یعنی Git در هر commit یک تصویر منطقی از وضعیت فایل‌های پروژه را نگه می‌دارد، نه اینکه commit صرفاً «یک diff» باشد.
+
+سوال ۷:
+
+Local repository روی سیستم توسعه‌دهنده است؛ remote repository نسخه‌ای روی سرویس‌هایی مانند GitLab/GitHub است که همکاری و اشتراک repository را امکان‌پذیر می‌کند.
