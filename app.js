@@ -82,3 +82,22 @@ taskList.addEventListener("click", (event) => {
 
     renderTasks();
 });
+
+taskList.addEventListener("change", (event) => {
+    if (!event.target.classList.contains("task-checkbox")) {
+        return;
+    }
+
+    const taskItem = event.target.closest(".task-item");
+    const taskId = taskItem.dataset.id;
+
+    const task = tasks.find((item) => item.id === taskId);
+
+    if (!task) {
+        return;
+    }
+
+    task.completed = event.target.checked;
+
+    renderTasks();
+});
