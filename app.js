@@ -77,6 +77,10 @@ function renderTasks() {
     updateStats();
 }
 
+function saveTasks() {
+    localStorage.setItem("taskflow.tasks", JSON.stringify(tasks));
+}
+
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -87,6 +91,7 @@ taskForm.addEventListener("submit", (event) => {
     }
 
     tasks.push(createTask(title));
+    saveTasks();
 
     taskInput.value = "";
     taskInput.focus();
@@ -124,6 +129,7 @@ taskList.addEventListener("change", (event) => {
     }
 
     task.completed = event.target.checked;
+    saveTasks();
 
     renderTasks();
 });
