@@ -6,6 +6,7 @@ const filterButtons = document.querySelectorAll(".filter-button");
 const totalCount = document.querySelector("#total-count");
 const activeCount = document.querySelector("#active-count");
 const completedCount = document.querySelector("#completed-count");
+const formError = document.querySelector("#form-error");
 
 let currentFilter = "all";
 let tasks = loadTasks();
@@ -96,22 +97,36 @@ function loadTasks() {
     }
 }
 
+function showFormError(message) {
+    formError.textContent = message;
+    formError.hidden = false;
+}
+
+function clearFormError() {
+    formError.textContent = "";
+    formError.hidden = true;
+}
+
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const title = taskInput.value.trim();
 
-    if (!title) {
+    clearFormError();
+
+    if (title.length < 2) {
+        showFormError("عنوان کار باید حداقل دو حرف داشته باشد.");
         return;
     }
 
-    tasks.push(createTask(title));
-    saveTasks();
+    const duplicateTask = tasks.some(
+        (task) => task.title.toLowerCase() === title.toLowerCase()
+    );
 
-    taskInput.value = "";
-    taskInput.focus();
-
-    renderTasks();
+    if (duplicateTask) {
+        showFormError("این کار قبلاً ثبت شده است.");
+        return;
+    }
 });
 
 taskList.addEventListener("click", (event) => {
