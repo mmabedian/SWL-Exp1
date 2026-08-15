@@ -108,6 +108,13 @@ function clearFormError() {
     formError.hidden = true;
 }
 
+function applySavedTheme() {
+    const savedTheme = localStorage.getItem("taskflow.theme") || "light";
+
+    document.body.dataset.theme = savedTheme;
+    themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+}
+
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -178,10 +185,13 @@ filterButtons.forEach((button) => {
 });
 
 themeToggle.addEventListener("click", () => {
-    const isDark = document.body.dataset.theme === "dark";
+    const newTheme = isDark ? "light" : "dark";
 
-    document.body.dataset.theme = isDark ? "light" : "dark";
-    themeToggle.textContent = isDark ? "🌙" : "☀️";
+    document.body.dataset.theme = newTheme;
+    localStorage.setItem("taskflow.theme", newTheme);
+
+    themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
 });
 
+applySavedTheme();
 renderTasks();
