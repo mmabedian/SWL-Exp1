@@ -8,6 +8,7 @@ const activeCount = document.querySelector("#active-count");
 const completedCount = document.querySelector("#completed-count");
 const formError = document.querySelector("#form-error");
 const themeToggle = document.querySelector("#theme-toggle");
+const clearCompletedButton = document.querySelector("#clear-completed");
 
 let currentFilter = "all";
 let tasks = loadTasks();
@@ -191,6 +192,13 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("taskflow.theme", newTheme);
 
     themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
+});
+
+clearCompletedButton.addEventListener("click", () => {
+    tasks = tasks.filter((task) => !task.completed);
+
+    saveTasks();
+    renderTasks();
 });
 
 applySavedTheme();

@@ -261,3 +261,9 @@ body[data-theme="dark"] {
         align-items: flex-start;
     }
 }
+
+.clear-button {
+    border: none;
+    background: transparent;
+    color: var(--danger);
+}
