@@ -8,7 +8,82 @@
 
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
+
+    <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="تغییر تم"
+    >
+        🌙
+    </button>
 </head>
+
+<section class="panel">
+    <form id="task-form" class="task-form">
+        <label for="task-input">کار جدید</label>
+
+        <div class="input-row">
+            <input
+                id="task-input"
+                type="text"
+                maxlength="80"
+                placeholder="مثلاً تکمیل گزارش آزمایش..."
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit" class="primary-button">
+                افزودن
+            </button>
+        </div>
+
+        <p id="form-error" class="error-message" hidden></p>
+    </form>
+
+    <div class="stats">
+        <article>
+            <strong id="total-count">0</strong>
+            <span>کل کارها</span>
+        </article>
+
+        <article>
+            <strong id="active-count">0</strong>
+            <span>در حال انجام</span>
+        </article>
+
+        <article>
+            <strong id="completed-count">0</strong>
+            <span>تکمیل شده</span>
+        </article>
+    </div>
+
+    <div class="toolbar">
+        <div class="filters">
+            <button type="button" class="filter-button active" data-filter="all">
+                همه
+            </button>
+
+            <button type="button" class="filter-button" data-filter="active">
+                فعال
+            </button>
+
+            <button type="button" class="filter-button" data-filter="completed">
+                انجام شده
+            </button>
+
+            <button id="clear-completed" class="clear-button" type="button">
+                حذف انجام‌شده‌ها
+            </button>
+        </div>
+    </div>
+
+    <ul id="task-list" class="task-list"></ul>
+
+    <p id="empty-state" class="empty-state">
+        هنوز کاری ثبت نشده است.
+    </p>
+</section>
 
 <body>
     <main class="app-shell">
