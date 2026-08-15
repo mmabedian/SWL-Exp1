@@ -7,6 +7,7 @@ const totalCount = document.querySelector("#total-count");
 const activeCount = document.querySelector("#active-count");
 const completedCount = document.querySelector("#completed-count");
 const formError = document.querySelector("#form-error");
+const themeToggle = document.querySelector("#theme-toggle");
 
 let currentFilter = "all";
 let tasks = loadTasks();
@@ -174,6 +175,13 @@ filterButtons.forEach((button) => {
 
         renderTasks();
     });
+});
+
+themeToggle.addEventListener("click", () => {
+    const isDark = document.body.dataset.theme === "dark";
+
+    document.body.dataset.theme = isDark ? "light" : "dark";
+    themeToggle.textContent = isDark ? "🌙" : "☀️";
 });
 
 renderTasks();
