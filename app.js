@@ -3,6 +3,9 @@ const taskInput = document.querySelector("#task-input");
 const taskList = document.querySelector("#task-list");
 const emptyState = document.querySelector("#empty-state");
 const filterButtons = document.querySelectorAll(".filter-button");
+const totalCount = document.querySelector("#total-count");
+const activeCount = document.querySelector("#active-count");
+const completedCount = document.querySelector("#completed-count");
 
 let currentFilter = "all";
 let tasks = [];
@@ -13,6 +16,26 @@ function createTask(title) {
         title,
         completed: false
     };
+}
+
+function updateStats() {
+    const completedTasks = tasks.filter((task) => task.completed).length;
+
+    totalCount.textContent = tasks.length;
+    completedCount.textContent = completedTasks;
+    activeCount.textContent = tasks.length - completedTasks;
+}
+
+function getVisibleTasks() {
+    if (currentFilter === "active") {
+        return tasks.filter((task) => !task.completed);
+    }
+
+    if (currentFilter === "completed") {
+        return tasks.filter((task) => task.completed);
+    }
+
+    return tasks;
 }
 
 function renderTasks() {
@@ -51,6 +74,7 @@ function renderTasks() {
     });
 
     emptyState.hidden = tasks.length > 0;
+    updateStats();
 }
 
 taskForm.addEventListener("submit", (event) => {
@@ -103,18 +127,6 @@ taskList.addEventListener("change", (event) => {
 
     renderTasks();
 });
-
-function getVisibleTasks() {
-    if (currentFilter === "active") {
-        return tasks.filter((task) => !task.completed);
-    }
-
-    if (currentFilter === "completed") {
-        return tasks.filter((task) => task.completed);
-    }
-
-    return tasks;
-}
 
 filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
