@@ -2,7 +2,9 @@ const taskForm = document.querySelector("#task-form");
 const taskInput = document.querySelector("#task-input");
 const taskList = document.querySelector("#task-list");
 const emptyState = document.querySelector("#empty-state");
+const filterButtons = document.querySelectorAll(".filter-button");
 
+let currentFilter = "all";
 let tasks = [];
 
 function createTask(title) {
@@ -16,7 +18,7 @@ function createTask(title) {
 function renderTasks() {
     taskList.innerHTML = "";
 
-    tasks.forEach((task) => {
+    getVisibleTasks().forEach((task) => {
         const item = document.createElement("li");
         item.className = "task-item";
         item.dataset.id = task.id;
@@ -100,4 +102,28 @@ taskList.addEventListener("change", (event) => {
     task.completed = event.target.checked;
 
     renderTasks();
+});
+
+function getVisibleTasks() {
+    if (currentFilter === "active") {
+        return tasks.filter((task) => !task.completed);
+    }
+
+    if (currentFilter === "completed") {
+        return tasks.filter((task) => task.completed);
+    }
+
+    return tasks;
+}
+
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        currentFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+            item.classList.toggle("active", item === button);
+        });
+
+        renderTasks();
+    });
 });
