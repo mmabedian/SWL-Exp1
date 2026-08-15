@@ -221,3 +221,43 @@ body[data-theme="dark"] {
     border-radius: 50%;
     background: var(--surface);
 }
+
+@media (max-width: 600px) {
+    .app-shell {
+        width: min(100% - 20px, 900px);
+        margin: 20px auto;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+
+    .input-row {
+        flex-direction: column;
+    }
+
+    .primary-button {
+        width: 100%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .filters {
+        width: 100%;
+    }
+
+    .filter-button {
+        flex: 1;
+    }
+
+    .task-item {
+        align-items: flex-start;
+    }
+}
