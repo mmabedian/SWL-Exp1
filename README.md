@@ -49,3 +49,15 @@
 ### ci/github-pages
 
 برای راه‌اندازی GitHub Actions و استقرار پروژه استفاده شده است.
+
+سؤال ۱: .git پوشه‌ای است که دیتابیس محلی Git شامل objectها، commitها، reference شاخه‌ها، تنظیمات repository، index و اطلاعات دیگر را نگهداری می‌کند. معمولاً با git init ایجاد می‌شود.
+
+سؤال ۲: Atomic یعنی یک commit یا PR یک تغییر منطقی و مستقل را انجام دهد؛ مثلاً «اضافه کردن حذف Task»، نه همزمان حذف Task، تغییر UI، README و Dark Mode.
+
+سؤال ۳:
+
+fetch        دریافت تغییرات remote بدون ادغام
+pull         fetch + ادغام تغییرات
+merge        ترکیب تاریخچه دو branch
+rebase       انتقال commitها روی base جدید
+cherry-pick  اعمال یک commit مشخص روی branch فعلی
