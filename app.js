@@ -67,3 +67,18 @@ taskForm.addEventListener("submit", (event) => {
 
     renderTasks();
 });
+
+taskList.addEventListener("click", (event) => {
+    const deleteButton = event.target.closest('[data-action="delete"]');
+
+    if (!deleteButton) {
+        return;
+    }
+
+    const taskItem = deleteButton.closest(".task-item");
+    const taskId = taskItem.dataset.id;
+
+    tasks = tasks.filter((task) => task.id !== taskId);
+
+    renderTasks();
+});
