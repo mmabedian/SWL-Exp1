@@ -8,7 +8,7 @@ const activeCount = document.querySelector("#active-count");
 const completedCount = document.querySelector("#completed-count");
 
 let currentFilter = "all";
-let tasks = [];
+let tasks = loadTasks();
 
 function createTask(title) {
     return {
@@ -81,6 +81,21 @@ function saveTasks() {
     localStorage.setItem("taskflow.tasks", JSON.stringify(tasks));
 }
 
+function loadTasks() {
+    try {
+        const storedTasks = localStorage.getItem("taskflow.tasks");
+
+        if (!storedTasks) {
+            return [];
+        }
+
+        return JSON.parse(storedTasks);
+    } catch (error) {
+        console.error("Could not load saved tasks.", error);
+        return [];
+    }
+}
+
 taskForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
@@ -145,3 +160,5 @@ filterButtons.forEach((button) => {
         renderTasks();
     });
 });
+
+renderTasks();
