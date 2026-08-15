@@ -31,6 +31,45 @@
 
         <p id="form-error" class="error-message" hidden></p>
     </form>
+
+    <div class="stats">
+        <article>
+            <strong id="total-count">0</strong>
+            <span>کل کارها</span>
+        </article>
+
+        <article>
+            <strong id="active-count">0</strong>
+            <span>در حال انجام</span>
+        </article>
+
+        <article>
+            <strong id="completed-count">0</strong>
+            <span>تکمیل شده</span>
+        </article>
+    </div>
+
+    <div class="toolbar">
+        <div class="filters">
+            <button type="button" class="filter-button active" data-filter="all">
+                همه
+            </button>
+
+            <button type="button" class="filter-button" data-filter="active">
+                فعال
+            </button>
+
+            <button type="button" class="filter-button" data-filter="completed">
+                انجام شده
+            </button>
+        </div>
+    </div>
+
+    <ul id="task-list" class="task-list"></ul>
+
+    <p id="empty-state" class="empty-state">
+        هنوز کاری ثبت نشده است.
+    </p>
 </section>
 
 <body>
