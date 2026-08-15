@@ -18,7 +18,33 @@ function renderTasks() {
 
     tasks.forEach((task) => {
         const item = document.createElement("li");
-        item.textContent = task.title;
+        item.className = "task-item";
+        item.dataset.id = task.id;
+
+        if (task.completed) {
+            item.classList.add("completed");
+        }
+
+        const label = document.createElement("label");
+        label.className = "task-content";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+        checkbox.className = "task-checkbox";
+
+        const title = document.createElement("span");
+        title.textContent = task.title;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "delete-button";
+        deleteButton.textContent = "حذف";
+        deleteButton.dataset.action = "delete";
+
+        label.append(checkbox, title);
+        item.append(label, deleteButton);
+
         taskList.appendChild(item);
     });
 
