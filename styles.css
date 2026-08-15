@@ -58,3 +58,50 @@ button {
 .subtitle {
     margin: 6px 0 0;
 }
+
+.panel {
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.task-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    outline: none;
+}
+
+.input-row input:focus {
+    border-color: var(--primary);
+}
+
+.primary-button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background: var(--primary);
+}
+
+.primary-button:hover {
+    background: var(--primary-hover);
+}
+
+.error-message {
+    margin-bottom: 0;
+    color: var(--danger);
+}

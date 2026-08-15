@@ -10,6 +10,29 @@
     <script src="app.js" defer></script>
 </head>
 
+<section class="panel">
+    <form id="task-form" class="task-form">
+        <label for="task-input">کار جدید</label>
+
+        <div class="input-row">
+            <input
+                id="task-input"
+                type="text"
+                maxlength="80"
+                placeholder="مثلاً تکمیل گزارش آزمایش..."
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit" class="primary-button">
+                افزودن
+            </button>
+        </div>
+
+        <p id="form-error" class="error-message" hidden></p>
+    </form>
+</section>
+
 <body>
     <main class="app-shell">
         <header class="app-header">
